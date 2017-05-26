@@ -1,0 +1,11 @@
+.navbar_item {
+    font-size: 24px;
+    font-variant: small-caps;
+    color: #ecf0f1;
+    margin: 0px 12px 0px 12px;
+}
+
+.navbar_item>a {
+    text-decoration: none;
+    color: #ecf0f1;
+}

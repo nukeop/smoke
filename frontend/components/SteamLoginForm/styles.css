@@ -1,0 +1,37 @@
+.steam_login_view {
+    margin: 24px auto 24px auto;
+    width: 50rem;
+    height: 100%;
+}
+
+.steam_login_modal {
+    display: flex;
+    flex-flow: column;
+    margin: 0px auto 0px auto;
+    width: 25rem;
+    height: 20rem;
+    background-color: #34495e;
+    padding: 24px;
+}
+
+.steam_login_image_container {
+    flex: 0 0 auto;
+}
+
+.steam_login_form {
+    flex: 1 1 auto;
+    width: 65%;
+    margin: 12px auto 12px auto;
+}
+
+.steam_login_form label {
+    display: block;
+    font-variant: small-caps;
+    color: #ecf0f1;
+}
+
+.steam_login_form input {
+    display: block;
+    width: 100%;
+    margin: 0px 0px 12px 0px;
+}
