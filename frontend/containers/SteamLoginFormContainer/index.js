@@ -5,24 +5,36 @@ import * as Actions from '../../actions';
 
 import ContentBox from '../../components/ContentBox';
 import SteamLoginForm from '../../components/SteamLoginForm';
+import SteamAuthCodeForm from '../../components/SteamAuthCodeForm';
 
 class SteamLoginFormContainer extends React.Component {
-    componentDidMount() {
-      this.props.socket.emit('json',
-      {
-        action: 'sign_in',
-        username: "asd",
-        password: "qwe"
-      }
+  componentDidMount() {
+  }
+
+  handleSignIn(username, password, auth_code=null) {
+    this.props.actions.steamSignIn(
+      this.props.socket,
+      username,
+      password,
+      auth_code
     );
   }
 
   render() {
     return (
       <ContentBox>
-        <SteamLoginForm
+        {
+          this.props.authCodeRequired
+          ?<SteamAuthCodeForm
+            username={this.props.credentials.username}
+            password={this.props.credentials.password}
+            handleSignIn={this.handleSignIn.bind(this)}
+          />
+          :<SteamLoginForm
+            handleSignIn={this.handleSignIn.bind(this)}
+          />
+        }
 
-        />
       </ContentBox>
     );
   }
@@ -31,7 +43,8 @@ class SteamLoginFormContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         socket: state.steam.socket,
-        authCodeRequired: state.steam.authCodeRequired
+        authCodeRequired: state.steam.authCodeRequired,
+        credentials: state.steam.credentials
     }
 }
 

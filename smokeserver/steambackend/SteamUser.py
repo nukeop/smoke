@@ -8,6 +8,7 @@ from steam.enums.emsg import EMsg
 
 from smokeserver.resolver import Resolver
 from smokeserver.socket import Socket
+from smokeserver.actions import *
 
 class SteamUser(object):
     def __init__(self, sid):
@@ -25,21 +26,21 @@ class SteamUser(object):
 
     def on_json(self, json, sid):
         print("steam user received: {}".format(str(json)))
-        if json['action'] == "sign_in":
-            self.log_in(json['username'], json['password'])
-        elif json['action'] == "auth_code":
-            self.log_in(
-                self.credentials[0],
-                self.credentials[1],
-                auth_code=json['auth_code']
-            )
+        if json['action'] == SIGN_IN_REQUEST:
+            if(json.get('authCode') is not None):
+                self.log_in(
+                    json['username'],
+                    json['password'],
+                    json['authCode']
+                )
+            else:
+                self.log_in(json['username'], json['password'])
 
 
     def log_in(self, user, password, auth_code=None, two_factor_code=None):
         if self.client.relogin_available:
             self.client.relogin()
         elif auth_code is not None:
-            print('logging in using auth code: {}'.format(auth_code))
             self.client.login(user, password, auth_code=auth_code)
         elif auth_code is None and two_factor_code is None:
             self.client.login(user, password)
@@ -76,7 +77,6 @@ class SteamUser(object):
         })
 
 
-
     def on_auth_code_required(self, is_2fa, code_mismatch):
         if code_mismatch:
             self.socket.send_json({
@@ -89,12 +89,12 @@ class SteamUser(object):
             })
         else:
             self.socket.send_json({
-                'action': 'auth_code_required'
+                'action': 'AUTH_CODE_REQUIRED'
             })
 
 
     def on_errors(self, result):
         self.socket.send_json({
-            'action': 'error',
+            'action': 'STEAM_ERROR',
             'body': repr(EResult(result))
         })

@@ -5,7 +5,7 @@ import styles from './styles.css';
 import SteamButton from '../SteamButton';
 import SteamInputField from '../SteamInputField';
 
-export default class SteamLoginForm extends React.Component {
+export default class SteamAuthCodeForm extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,8 +13,9 @@ export default class SteamLoginForm extends React.Component {
   handleSignIn(e) {
     e.preventDefault();
     this.props.handleSignIn(
-      this.usernameInput.value,
-      this.passwordInput.value
+      this.props.username,
+      this.props.password,
+      this.authCodeInput.value
     );
   }
 
@@ -25,26 +26,23 @@ export default class SteamLoginForm extends React.Component {
           <img src="https://steamcommunity-a.akamaihd.net/public/images/chat/steam_logo.png" />
         </div>
         <span style={{marginBottom: "36px"}}></span>
+        <h2>Authentication code required.</h2>
+        <h3>Please check your email for the Steam Guard code and input it here.</h3>
+        <span style={{marginBottom: "36px"}}></span>
         <form onSubmit={this.handleSignIn.bind(this)}>
           <SteamInputField
-            icon="user-o"
-            placeholder="Username"
+            icon="lock"
+            placeholder="Authentication code"
             type="text"
             name="username"
-            refFun={((input) => {this.usernameInput = input; }).bind(this)}
-          />
-          <SteamInputField
-            icon="lock"
-            placeholder="Password"
-            type="password"
-            name="password"
-            refFun={((input) => {this.passwordInput = input; }).bind(this)}
+            refFun={((input) => {this.authCodeInput = input; }).bind(this)}
           />
           <SteamButton
             type="submit"
-          >Sign in</SteamButton>
-        </form>
-      </div>
+            >Send authentication code</SteamButton>
+          </form>
+        </div>
     );
   }
+
 }

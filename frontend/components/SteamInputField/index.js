@@ -24,6 +24,7 @@ export default class SteamInputField extends React.Component {
           type={this.props.type}
           name={this.props.name}
           placeholder={this.props.placeholder}
+          ref={this.props.refFun}
         />
       </div>
     );

@@ -1,0 +1,18 @@
+.container {
+  margin: 10% 10%;
+  display: flex;
+  flex-flow: column;
+}
+
+.container form {
+  display: flex;
+  flex-flow: column;
+}
+
+.img_container {
+  flex: 0 0 auto;
+}
+
+h2, h3 {
+  color: #ecf0f1;
+}

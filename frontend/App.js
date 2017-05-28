@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import NavbarItem from './components/Navbar/NavbarItem';
+import SocketReceiver from './containers/SocketReceiver';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -13,12 +14,14 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <SocketReceiver />
                 <Navbar>
                     <NavbarItem><Link to="/login-form"> Log in </Link></NavbarItem>
                     <NavbarItem>Store</NavbarItem>
                     <NavbarItem>Library</NavbarItem>
                     <NavbarItem>Community</NavbarItem>
                     <NavbarItem>Profile</NavbarItem>
+                    <NavbarItem>Chat</NavbarItem>
                 </Navbar>
                 <div className={styles.app_container}>
                     {this.props.children}
