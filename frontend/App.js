@@ -1,5 +1,9 @@
+import React from 'react';
 import Navbar from './components/Navbar';
 import NavbarItem from './components/Navbar/NavbarItem';
+import SteamDataManager from './components/SteamDataManager';
+
+import {Link} from 'react-router-dom';
 
 import styles from './styles.css';
 
@@ -8,11 +12,12 @@ export default class App extends React.Component {
         super(props);
     }
 
+
     render() {
         return (
             <div>
                 <Navbar>
-                    <NavbarItem><a href="#/login-form"> Log in </a></NavbarItem>
+                    <NavbarItem><Link to="/login-form"> Log in </Link></NavbarItem>
                     <NavbarItem>Store</NavbarItem>
                     <NavbarItem>Library</NavbarItem>
                     <NavbarItem>Community</NavbarItem>
@@ -21,6 +26,7 @@ export default class App extends React.Component {
                 <div className={styles.app_container}>
                     {this.props.children}
                 </div>
+                <SteamDataManager />
             </div>
         );
     }

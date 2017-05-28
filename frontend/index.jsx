@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import createHashHistory from 'history/createHashHistory';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import App from './App';
 import SteamLoginForm from './components/SteamLoginForm';
@@ -13,7 +15,7 @@ ReactDOM.render(
             <Route path="/login-form" component={SteamLoginForm}/>
         </App>
     </Router>
-        ,
+    ,
     document.getElementById('react_container')
 );
 
