@@ -1,0 +1,17 @@
+.steam_button {
+  border-radius: 2px;
+  border: none;
+  padding: 1px 16px;
+  display: inline-block;
+  cursor: pointer;
+  color: #67c1f5;
+  background: rgba(103, 193, 245, 0.2);
+  font-size: 12px;
+  line-height: 30px;
+  margin: 6px 0px;
+}
+
+.steam_button:hover {
+  color: #fff;
+  background-color: #67c1f5;
+}

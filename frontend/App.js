@@ -1,18 +1,15 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import NavbarItem from './components/Navbar/NavbarItem';
-import SteamDataManager from './components/SteamDataManager';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from './actions';
 
 import styles from './styles.css';
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
+class App extends React.Component {
     render() {
         return (
             <div>
@@ -26,8 +23,19 @@ export default class App extends React.Component {
                 <div className={styles.app_container}>
                     {this.props.children}
                 </div>
-                <SteamDataManager />
             </div>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {}
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(Actions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

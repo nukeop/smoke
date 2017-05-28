@@ -1,10 +1,18 @@
+import {AUTH_CODE_REQUIRED} from '../actions';
+
 const initialState = {
+    socket: io(),
     authCodeRequired: false
 };
 
-export default function steam(state = initialState, action) {
+export default function SteamReducer(state = initialState, action) {
     switch (action.type) {
-        default:
+    case AUTH_CODE_REQUIRED:
+        return Object.assign({}, state,
+                             {
+                                 authCodeRequired: action.state
+                             });
+    default:
         return state;
     }
 }

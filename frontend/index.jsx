@@ -2,20 +2,25 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import createHashHistory from 'history/createHashHistory';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import configureStore from './store/configureStore';
 
 import App from './App';
-import SteamLoginForm from './components/SteamLoginForm';
+import SteamLoginFormContainer from './containers/SteamLoginFormContainer';
 
 import './app.global.css';
 
+
+const store = configureStore();
+
 ReactDOM.render(
-    <Router history={createHashHistory()}>
-        <App>
-            <Route path="/login-form" component={SteamLoginForm}/>
-        </App>
-    </Router>
+
+    <Provider store={store}>
+        <Router history={createHashHistory()}>
+            <App>
+                <Route path="/login-form" component={SteamLoginFormContainer}/>
+            </App>
+        </Router>
+    </Provider>
     ,
     document.getElementById('react_container')
 );
-
