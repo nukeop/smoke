@@ -9,6 +9,7 @@
     "pyinstall": "pip install -r requirements.txt",
     "watch": "webpack -d --watch",
     "build": "webpack -p",
+    "dev": "webpack-dev-server --hot",
     "test": "mocha"
   },
   "keywords": [
@@ -36,6 +37,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-fontawesome": "^1.6.1",
+    "react-hot-loader": "^3.0.0-beta.7",
     "react-loaders": "^2.5.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -44,6 +46,7 @@
     "redux-promise": "^0.5.3",
     "socket.io": "^1.7.3",
     "style-loader": "^0.18.1",
-    "webpack": "^2.6.0"
+    "webpack": "^2.6.0",
+    "webpack-dev-server": "^2.4.5"
   }
 }

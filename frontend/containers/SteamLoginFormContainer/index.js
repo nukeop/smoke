@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions';
 
+import Loader from 'react-loaders';
+
 import ContentBox from '../../components/ContentBox';
 import SteamLoginForm from '../../components/SteamLoginForm';
 import SteamAuthCodeForm from '../../components/SteamAuthCodeForm';
 
 class SteamLoginFormContainer extends React.Component {
-  componentDidMount() {
-  }
 
   handleSignIn(username, password, auth_code=null) {
     this.props.actions.steamSignIn(

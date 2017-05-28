@@ -1,0 +1,32 @@
+.friend_container {
+  background-color: #2c3a49;
+  display: flex;
+  flex-flow: row;
+  margin: 6px;
+  padding: 6px;
+}
+
+.avatar_container {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+}
+
+.avatar_online {
+  box-shadow: 0px 0px 1px 2px #3498db;
+}
+
+.avatar_ingame {
+  box-shadow: 0px 0px 1px 2px #2ecc71;
+}
+
+.avatar_offline {
+  box-shadow: 0px 0px 1px 2px #bdc3c7;
+}
+
+
+
+.info_container {
+  flex: 1 1 auto;
+  margin: 0px 6px;
+}

@@ -9,7 +9,7 @@ var config = {
     entry: APP_DIR + '/index.jsx',
     output: {
         path: BUILD_DIR,
-        publicPath: BUILD_DIR,
+        publicPath: '/static/',
         filename: 'bundle.js',
     },
     module: {
@@ -29,7 +29,7 @@ var config = {
         new webpack.ProvidePlugin({
             "React": "react"
         }),
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin("styles.css"),
     ]
 };
 

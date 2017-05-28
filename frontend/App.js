@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
+import { withRouter } from 'react-router-dom';
 
 import styles from './styles.css';
 
@@ -16,12 +17,12 @@ class App extends React.Component {
             <div>
                 <SocketReceiver />
                 <Navbar>
-                    <NavbarItem><Link to="/login-form"> Log in </Link></NavbarItem>
+                    <NavbarItem><Link to="/login">Log in</Link></NavbarItem>
                     <NavbarItem>Store</NavbarItem>
                     <NavbarItem>Library</NavbarItem>
                     <NavbarItem>Community</NavbarItem>
                     <NavbarItem>Profile</NavbarItem>
-                    <NavbarItem>Chat</NavbarItem>
+                    <NavbarItem><Link to="/chat">Chat</Link></NavbarItem>
                 </Navbar>
                 <div className={styles.app_container}>
                     {this.props.children}
@@ -41,4 +42,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

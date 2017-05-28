@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 import steam.client
 
@@ -58,28 +59,36 @@ class SteamUser(object):
             self.credentials = (user, password)
 
 
-    def change_status(self, persona_state, player_name):
-        pass
+    def change_status(self, persona_state):
+        sendmsg = MsgProto(EMsg.ClientChangeStatus)
+        sendmsg.body.persona_state = persona_state
+        sendmsg.body.player_name = self.client.user.name
+
+        self.client.send(sendmsg)
 
 
     def on_account_info(self, msg):
         if msg is None:
             return
 
-        self.change_status
+        print('account info received')
+        print(msg)
+        self.change_status(EPersonaState.Online)
 
 
     def on_client_friends_list(self, msg):
         if msg is None:
             return
 
+        time.sleep(3)
         friends_json = []
         for friend in self.friends:
             friends_json.append({
                 'name': friend.name,
                 'steam_id': friend.steam_id,
                 'relationship': friend.relationship,
-                'state': friend.state
+                'state': friend.state,
+                'avatar': friend.get_avatar_url(0)
             })
 
         self.socket.send_json({
@@ -100,7 +109,7 @@ class SteamUser(object):
             })
         else:
             self.socket.send_json({
-                'action': 'AUTH_CODE_REQUIRED'
+                'action': AUTH_CODE_REQUIRED
             })
 
 
