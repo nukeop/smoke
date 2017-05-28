@@ -1,4 +1,5 @@
 import json
+import os
 
 import steam.client
 
@@ -37,7 +38,17 @@ class SteamUser(object):
                 self.log_in(json['username'], json['password'])
 
 
+    def set_up_sentry(self, user):
+        sentrypath = os.path.join(os.getcwd(), 'sentries', user)
+        if not os.path.exists(sentrypath):
+            os.makedirs(sentrypath)
+
+        self.client.set_credential_location(sentrypath)
+
+
     def log_in(self, user, password, auth_code=None, two_factor_code=None):
+        self.set_up_sentry(user)
+
         if self.client.relogin_available:
             self.client.relogin()
         elif auth_code is not None:
@@ -72,7 +83,7 @@ class SteamUser(object):
             })
 
         self.socket.send_json({
-            'action': 'friends_list',
+            'action': RECEIVE_FRIENDS_LIST,
             'data': friends_json
         })
 

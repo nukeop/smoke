@@ -10,6 +10,8 @@ class SocketReceiver extends React.Component {
 
       if (msg.action == Actions.AUTH_CODE_REQUIRED) {
         this.props.actions.setAuthCodeRequired(true);
+      } else if (msg.action == Actions.RECEIVE_FRIENDS_LIST) {
+        this.props.actions.receiveFriendsList(msg);
       }
     });
   }

@@ -1,4 +1,4 @@
-import {AUTH_CODE_REQUIRED, SIGN_IN_REQUEST} from '../actions';
+import {AUTH_CODE_REQUIRED, SIGN_IN_REQUEST, RECEIVE_FRIENDS_LIST} from '../actions';
 
 const initialState = {
     socket: io(),
@@ -8,7 +8,8 @@ const initialState = {
       username: null,
       password: null,
       authCode: null
-    }
+    },
+    friendsList: []
 };
 
 export default function SteamReducer(state = initialState, action) {
@@ -26,6 +27,11 @@ export default function SteamReducer(state = initialState, action) {
     return Object.assign({}, state,
       {
         authCodeRequired: action.state
+      });
+    case RECEIVE_FRIENDS_LIST:
+    return Object.assign({}, state,
+      {
+        friendsList: action.friendsList
       });
     default:
     return state;

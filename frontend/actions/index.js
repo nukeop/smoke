@@ -1,6 +1,7 @@
 export const AUTH_CODE_REQUIRED = 'AUTH_CODE_REQUIRED';
 export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
 export const RECEIVE_SOCKET_MESSAGE = 'RECEIVE_SOCKET_MESSAGE';
+export const RECEIVE_FRIENDS_LIST = 'RECEIVE_FRIENDS_LIST';
 export const STEAM_ERROR = 'STEAM_ERROR';
 
 
@@ -25,6 +26,13 @@ export function steamSignIn(socket, username, password, authCode=null) {
       password: password,
       authCode: authCode
     }
+}
+
+export function receiveFriendsList(message) {
+  return {
+    type: RECEIVE_FRIENDS_LIST,
+    friendsList: message.data
+  }
 }
 
 
