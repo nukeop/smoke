@@ -9,7 +9,6 @@
     "pyinstall": "pip install -r requirements.txt",
     "watch": "webpack -d --watch",
     "build": "webpack -p",
-    "dev": "webpack-dev-server --progress",
     "test": "mocha"
   },
   "keywords": [
@@ -25,7 +24,6 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-react-hmre": "^1.1.1",
     "bower": "^1.8.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.3",
@@ -38,7 +36,6 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-fontawesome": "^1.6.1",
-    "react-hot-loader": "^3.0.0-beta.7",
     "react-loaders": "^2.5.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -47,8 +44,7 @@
     "redux-promise": "^0.5.3",
     "socket.io": "^1.7.3",
     "style-loader": "^0.18.1",
-    "webpack": "^2.1.0",
-    "webpack-dev-server": "^2.1.0"
+    "webpack": "^2.1.0"
   },
   "dependencies": {
     "react-hot-loader": "^3.0.0-beta.7"

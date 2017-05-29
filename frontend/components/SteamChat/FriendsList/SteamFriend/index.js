@@ -32,20 +32,16 @@ export default class SteamFriend extends React.Component {
   }
 
   render() {
-
-    const ac = styles.avatar_container;
-    const aonline = styles.avatar_online;
-    const aoffline = styles.avatar_offline;
-
-    const avatarClass = classNames({
-      ac: true,
-      aonline: this.props.state>0,
-      aoffline: this.props.state==0
-      });
+    var classes = styles.avatar_container;
+    if (this.props.state > 0) {
+      classes += " " + styles.avatar_online;
+    } else {
+      classes += " " + styles.avatar_offline;
+    }
 
     return (
       <div className={styles.friend_container}>
-        <div className={avatarClass}>
+        <div className={classes}>
           <img src={this.props.avatar} />
         </div>
         <div className={styles.info_container}>

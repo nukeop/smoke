@@ -10,10 +10,15 @@ export default class FriendsList extends React.Component {
   }
 
   render() {
+    var sortedFriends = this.props.friendsList.sort(function(a, b){
+      return b.state-a.state;
+    });
+
+
     return (
       <div className={styles.friends_list_container}>
         {
-          this.props.friendsList.map((el, i) => {
+          sortedFriends.map((el, i) => {
             return(
             <SteamFriend
               name={el.name}

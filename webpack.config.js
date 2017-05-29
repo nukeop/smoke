@@ -7,28 +7,12 @@ const APP_DIR = path.resolve(__dirname, 'frontend');
 
 var config = {
   context: APP_DIR,
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    APP_DIR + '/index.jsx'
-  ],
+  entry: APP_DIR + '/index.jsx',
   output: {
     path: BUILD_DIR,
-    publicPath: 'http://localhost:8080/static/',
+    publicPath: '/static/',
     filename: './bundle.js',
     sourceMapFilename: '[file].map'
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-    contentBase: BUILD_DIR,
-    publicPath: 'http://localhost:8080/static/',
-    inline: true,
-    headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:5000',
-      'Access-Control-Allow-Headers': 'X-Requested-With'
-    }
   },
   module: {
     loaders: [
@@ -44,7 +28,6 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.ProvidePlugin({
       "React": "react"
